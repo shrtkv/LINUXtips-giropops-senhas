@@ -1,4 +1,0 @@
-Flask>=3.0.0
-Werkzeug>=3.0.0
-redis==5.0.0b1
-prometheus-client==0.16.0
