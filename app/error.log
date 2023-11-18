@@ -1,0 +1,103 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 698, in connect
+    sock = self.retry.call_with_retry(
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 699, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 987, in _connect
+    raise err
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 975, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/chernob/.local/lib/python3.10/site-packages/flask/app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/chernob/.local/lib/python3.10/site-packages/flask/app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/chernob/.local/lib/python3.10/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/chernob/.local/lib/python3.10/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/chernob/LINUXtips-giropops-senhas/app/app.py", line 43, in index
+    senhas = r.lrange("senhas", 0, 9)
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/commands/core.py", line 2715, in lrange
+    return self.execute_command("LRANGE", name, start, end)
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/client.py", line 1255, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 1441, in get_connection
+    connection.connect()
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 704, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 192.168.100.152:6379. Connection refused.
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2023 23:35:43] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 698, in connect
+    sock = self.retry.call_with_retry(
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 699, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 987, in _connect
+    raise err
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 975, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/chernob/.local/lib/python3.10/site-packages/flask/app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/chernob/.local/lib/python3.10/site-packages/flask/app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/chernob/.local/lib/python3.10/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/chernob/.local/lib/python3.10/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/chernob/LINUXtips-giropops-senhas/app/app.py", line 43, in index
+    senhas = r.lrange("senhas", 0, 9)
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/commands/core.py", line 2715, in lrange
+    return self.execute_command("LRANGE", name, start, end)
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/client.py", line 1255, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 1441, in get_connection
+    connection.connect()
+  File "/home/chernob/.local/lib/python3.10/site-packages/redis/connection.py", line 704, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 192.168.100.152:6379. Connection refused.
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2023 23:35:53] "[35m[1mGET / HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2023 23:36:45] "GET / HTTP/1.1" 200 -

@@ -1,0 +1,17 @@
+FROM cgr.dev/chainguard/python:latest-dev
+
+WORKDIR /app
+
+COPY app/requirements.txt .
+
+RUN pip install --user --no-cache-dir -r requirements.txt
+RUN echo ${PWD} && ls -lR
+ENV PATH=$PATH:/home/nonroot/.local/bin
+
+COPY app/app.py .
+
+COPY app/templates/ templates/
+
+COPY app/static/ static/
+
+ENTRYPOINT ["flask", "run", "--host=0.0.0.0"]

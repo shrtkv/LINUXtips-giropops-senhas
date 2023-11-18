@@ -8,7 +8,7 @@ from prometheus_client import Counter, start_http_server, generate_latest
 
 app = Flask(__name__)
 
-redis_host = os.environ.get('REDIS_HOST', 'redis-service')
+redis_host = os.environ.get('REDIS_HOST', 'localhost')
 redis_port = 6379
 redis_password = ""
 
@@ -76,4 +76,4 @@ if __name__ == '__main__':
     import logging
     logging.basicConfig(filename='error.log', level=logging.DEBUG)
     start_http_server(8088)
-    app.run(debug=True)
+    app.run(debug=False)

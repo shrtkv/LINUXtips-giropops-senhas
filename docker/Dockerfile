@@ -1,13 +1,15 @@
-FROM python:3.9 as build-env
+FROM cgr.dev/chainguard/python:latest-dev as build-env
 WORKDIR /app
-COPY app/* .
-RUN pip3 install --no-cache-dir -r requirements.txt
+COPY app/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-FROM gcr.io/distroless/python3-debian10
+FROM cgr.dev/chainguard/python:latest
 WORKDIR /app
-COPY --from=build-env /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+COPY --from=build-env /home/nonroot/.local/lib/python3.12/site-packages /home/nonroot/.local/lib/python3.12/site-packages
+
+COPY --from=build-env /home/nonroot/.local/bin  /home/nonroot/.local/bin
+#ENV PATH=$PATH:/home/nonroot/.local/bin
 COPY app/app.py .
 COPY app/templates templates/
 COPY app/static static/
-CMD ["app.py"]
-
+ENTRYPOINT ["python3", "app.py", "--host=0.0.0.0"]
