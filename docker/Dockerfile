@@ -12,4 +12,4 @@ COPY --from=build-env /home/nonroot/.local/bin  /home/nonroot/.local/bin
 COPY app/app.py .
 COPY app/templates templates/
 COPY app/static static/
-ENTRYPOINT ["python3", "app.py", "--host=0.0.0.0"]
+ENTRYPOINT ["python", "app.py", "--host=0.0.0.0"]
