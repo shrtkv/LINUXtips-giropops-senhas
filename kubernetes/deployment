@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels: 
+    app: giropops-senhas
+  name: giropops-senhas
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: giropops-senhas
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: giropops-senhas
+    spec:
+      containers:
+      - image: {} # shrtkv/LINUXtips-giropops-senhas:1.0
+        name: giropops-app
+        resources:
+          limits:
+            cpu: {} # 0.x
+            memory: {} # XXXMi
+          requests:
+            cpu: {}
+            memory: {}
+      - image: cgr.dev/chainguard/redis:latest
+        name: redis-service
+        resources:
+          limits:
+            cpu: {} 
+            memory: {}
+          requests:
+            cpu: {}
+            memory: {}
+
+
