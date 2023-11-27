@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels: 
+  labels:
     app: giropops-senhas
   name: giropops-senhas
 spec:
@@ -9,7 +9,8 @@ spec:
   selector:
     matchLabels:
       app: giropops-senhas
-  strategy: {}
+  strategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -18,21 +19,27 @@ spec:
       containers:
       - image: shrtkv/linuxtips-giropops-senhas:safe
         name: giropops-app
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REDIS_HOST
+          value: redis-service 
         resources:
           limits:
-            cpu: {} # 0.x
-            memory: {} # XXXMi
+            cpu: "1"
+            memory: "500Mi"
           requests:
-            cpu: {}
-            memory: {}
+            cpu: "500m"
+            memory: "250Mi"
       - image: cgr.dev/chainguard/redis:latest
         name: redis-service
+        ports:
+        - containerPort: 6379
         resources:
           limits:
-            cpu: {} 
-            memory: {}
+            cpu: "1"
+            memory: "500Mi"
           requests:
-            cpu: {}
-            memory: {}
-
+            cpu: "500m"
+            memory: "250Mi"
 

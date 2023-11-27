@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-single-html
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-single-html
+  template:
+    metadata:
+      labels:
+        app: nginx-single-html
+    spec:
+      containers:
+      - name: nginx-container
+        image: shrtkv/nginx-single-html:devops-jr-challenge
+        ports:
+        - containerPort: 80
