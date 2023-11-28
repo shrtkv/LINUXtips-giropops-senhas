@@ -5,7 +5,7 @@ metadata:
     app: giropops-senhas
   name: giropops-senhas
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: giropops-senhas
@@ -31,6 +31,28 @@ spec:
           requests:
             cpu: "500m"
             memory: "250Mi"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: redis-service
+  name: redis-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-service
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: redis-service
+    spec:
+      containers:
       - image: cgr.dev/chainguard/redis:latest
         name: redis-service
         ports:
